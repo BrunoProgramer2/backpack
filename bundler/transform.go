@@ -10,15 +10,16 @@ import (
 func Transform(name string) string {
 	root, _ := os.Getwd()
 
-	bytes, _ := ioutil.ReadFile(root + "/pages/" + name + ".jsx")
+	api.Build(api.BuildOptions{
+		EntryPoints: []string{root + "/pages/" + name + ".jsx"},
+		Outfile:     root + "/tmp/" + name + ".js",
+		Bundle:      true,
+		Write:       true,
+	})
+
+	bytes, _ := ioutil.ReadFile(root + "/tmp/" + name + ".js")
 
 	file := string(bytes)
 
-	code := api.Transform(file, api.TransformOptions{
-		JSX: api.JSXTransform,
-
-		Loader: api.LoaderJSX,
-	})
-
-	return string(code.Code)
+	return file
 }
