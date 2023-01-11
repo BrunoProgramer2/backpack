@@ -15,6 +15,8 @@ func Transform(name string) string {
 	file := string(bytes)
 
 	code := api.Transform(file, api.TransformOptions{
+		JSX: api.JSXTransform,
+
 		Loader: api.LoaderJSX,
 	})
 
