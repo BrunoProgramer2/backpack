@@ -1,0 +1,14 @@
+/node_modules
+/pages
+/tmp
+/middlewares
+/temporal
+.air.toml
+main.go
+*.jsx
+*.js
+*.exe
+*.log
+package.json
+package-lock.json
+/middlewares/content-type
