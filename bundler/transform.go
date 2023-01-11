@@ -15,6 +15,9 @@ func Transform(name string) string {
 		Outfile:     root + "/tmp/" + name + ".js",
 		Bundle:      true,
 		Write:       true,
+		Loader: map[string]api.Loader{
+			".jsx": api.LoaderJSX,
+		},
 	})
 
 	bytes, _ := ioutil.ReadFile(root + "/tmp/" + name + ".js")
