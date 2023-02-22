@@ -2,17 +2,15 @@ package bundler
 
 import (
 	"io/ioutil"
-	"os"
 
 	"github.com/evanw/esbuild/pkg/api"
 )
 
-func Transform(name string) string {
-	root, _ := os.Getwd()
+func Transform(dir string, name string) string {
 
 	api.Build(api.BuildOptions{
-		EntryPoints: []string{root + "/pages/" + name + ".jsx"},
-		Outfile:     root + "/tmp/" + name + ".js",
+		EntryPoints: []string{dir + "/pages/" + name + ".jsx"},
+		Outfile:     dir + "/tmp/" + name + ".js",
 		Bundle:      true,
 		Write:       true,
 		Loader: map[string]api.Loader{
@@ -20,7 +18,7 @@ func Transform(name string) string {
 		},
 	})
 
-	bytes, _ := ioutil.ReadFile(root + "/tmp/" + name + ".js")
+	bytes, _ := ioutil.ReadFile(dir + "/tmp/" + name + ".js")
 
 	file := string(bytes)
 
