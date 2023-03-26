@@ -7,7 +7,7 @@ import (
 )
 
 func Transform(dir string, name string) string {
-	//build
+	//bundle
 	api.Build(api.BuildOptions{
 		EntryPoints: []string{dir + "/pages/" + name + ".jsx"},
 		Outfile:     dir + "/tmp/" + name + ".js",
